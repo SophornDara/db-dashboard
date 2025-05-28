@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Departments</h1>
+    <ul>
+        <% if (departments && departments.length) { %>
+            <% departments.forEach(dept => { %>
+                <li>
+                    <a href="/departments/<%= dept.dept_no %>/employees">
+                        <%= dept.dept_name %> (<%= dept.dept_no %>)
+                    </a>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <li>No departments found.</li>
+        <% } %>
+    </ul>
+    <p><a href="/">Back to Dashboard</a></p>
+</body>
+</html>

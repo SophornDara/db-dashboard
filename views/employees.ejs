@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees in Department <%= dept_no %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Employees in Department <%= dept_no %></h1>
+    <% if (employees && employees.length) { %>
+        <ul>
+            <% employees.forEach(emp => { %>
+                <li>
+                    <a href="/employees/<%= emp.emp_no %>">
+                        <%= emp.first_name %> <%= emp.last_name %> (ID: <%= emp.emp_no %>)
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No employees found in this department.</p>
+    <% } %>
+    <p><a href="/departments">Back to Departments</a></p>
+</body>
+</html>

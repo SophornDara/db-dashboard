@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% if (employee) { %>
+        <title>Details for <%= employee.first_name %> <%= employee.last_name %></title>
+    <% } else { %>
+        <title>Employee Details</title>
+    <% } %>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <% if (employee) { %>
+        <h1><%= employee.first_name %> <%= employee.last_name %> (ID: <%= employee.emp_no %>)</h1>
+        <p><strong>Birth Date:</strong> <%= new Date(employee.birth_date).toLocaleDateString() %></p>
+        <p><strong>Gender:</strong> <%= employee.gender %></p>
+        <p><strong>Hire Date:</strong> <%= new Date(employee.hire_date).toLocaleDateString() %></p>
+
+        <h2>Salary History</h2>
+        <% if (salaries && salaries.length) { %>
+            <ul>
+                <% 
+                   // Group salaries by year if not already done, 
+                   // or if multiple entries for a year exist, decide how to display.
+                   // The query in app.js already orders by year.
+                   // This example assumes `salaries` contains distinct year entries or you want to list all.
+                   // Your query `YEAR(s.from_date) AS year` is good.
+                %>
+                <% salaries.forEach(sal => { %>
+                    <li>Year: <%= sal.year %> - Salary: <%= sal.salary.toLocaleString() %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No salary information available.</p>
+        <% } %>
+        
+    <% } else { %>
+        <h1>Employee Not Found</h1>
+    <% } %>
+    <p><a href="/departments">Back to Departments List</a></p>
+    </body>
+</html>
