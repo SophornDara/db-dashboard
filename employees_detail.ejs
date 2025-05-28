@@ -1,0 +1,17 @@
+<h2>Employee Detail</h2>
+<p>Name: <%= employee.first_name %>
+        <%= employee.last_name %>
+</p>
+<p>Birth Date: <%= employee.birth_date %>
+</p>
+<p>Hire Date: <%= employee.hire_date %>
+</p>
+
+<h3>Salaries by Year</h3>
+<ul>
+    <% salaries.forEach(s=> { %>
+        <li>
+            <%= s.year %>: $<%= s.salary %>
+        </li>
+        <% }) %>
+</ul>

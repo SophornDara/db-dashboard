@@ -1,0 +1,8 @@
+<h2>Departments</h2>
+<ul>
+    <% departments.forEach(d=> { %>
+        <li><a href="/departments/<%= d.dept_no %>/employees">
+                <%= d.dept_name %>
+            </a></li>
+        <% }) %>
+</ul>
